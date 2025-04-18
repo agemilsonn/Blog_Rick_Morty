@@ -3,17 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MyNavbar from './components/MyNavbar';
 import Footer from './components/Footer';
 import About from './components/About';
-import PostList from './components/PostList'; 
-import Post from './components/Post'; 
+import Home from './components/Home';  
+import Post from './components/Post';
 
 function App() {
   return (
     <Router>
       <MyNavbar />
       <Routes>
-        <Route path="/" element={<PostList />} />
+        <Route path="/" element={<Home />} /> 
         <Route path="/about" element={<About />} />
-        <Route path="/postagem/:id" element={<Post />} />
+        <Route path="/post/:id" element={<Post />} />
       </Routes>
       <Footer />
     </Router>

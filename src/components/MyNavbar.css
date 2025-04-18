@@ -1,0 +1,26 @@
+.custom-sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: #222;
+    z-index: 1051;
+    transition: left 0.3s ease-in-out;
+    padding-top: 60px;
+  }
+  
+  .custom-sidebar.show {
+    left: 0;
+  }
+  
+  .sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+  }
+  

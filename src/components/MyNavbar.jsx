@@ -1,25 +1,112 @@
-
-// components/MyNavbar.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Lottie from 'react-lottie';
+import searchAnimation from '../assets/icon-pesquisar.json';
+import { searchCharacters } from '../utils/search';
+import SearchOverlay from './SearchOverlay';
+import './MyNavbar.css';
 
 const MyNavbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  const handleSearch = async () => {
+    if (searchTerm.length >= 3) {
+      const result = await searchCharacters(searchTerm);
+      setSuggestions(result);
+    } else {
+      setSuggestions([]);
+    }
+  };
+
+  useEffect(() => {
+    handleSearch();
+  }, [searchTerm]);
+
+  const handleSuggestionClick = (id) => {
+    navigate(`/post/${id}`);
+    setShowSearch(false);
+    setSearchTerm('');
+    setSuggestions([]);
+  };
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: searchAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
 
   return (
-    <Navbar expand="lg" className="bg-dark" data-bs-theme="dark">
-      <Container>
-        <Navbar.Brand as={Link} to="/" className="text-white">Rick and Morty</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/" className={`text-white ${location.pathname === '/' ? 'active-link' : ''}`}>Home</Nav.Link>
-            <Nav.Link as={Link} to="/about" className={`text-white ${location.pathname === '/about' ? 'active-link' : ''}`}>Sobre</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <>
+      <Navbar expand="lg" className="bg-dark px-3 py-2" data-bs-theme="dark">
+        <Container fluid className="d-flex align-items-center justify-content-between">
+
+          {/* Botão hamburguer visível apenas no mobile */}
+          <div className="d-lg-none" onClick={() => setShowSidebar(true)} style={{ cursor: 'pointer', fontSize: '1.5rem', color: 'white' }}>
+            ☰
+          </div>
+
+          {/* Logo */}
+          <Navbar.Brand as={Link} to="/" className="text-white mx-2">
+            <img src="/src/assets/LogoRickMorty.png" alt="Logo" style={{ height: '40px' }} />
+          </Navbar.Brand>
+
+          {/* Menu e lupa em telas grandes */}
+          <div className="d-none d-lg-flex align-items-center ms-auto">
+            <Nav className="me-3">
+              <Nav.Link as={Link} to="/" className={`text-white ${location.pathname === '/' ? 'active-link' : ''}`}>Home</Nav.Link>
+              <Nav.Link as={Link} to="/about" className={`text-white ${location.pathname === '/about' ? 'active-link' : ''}`}>Sobre</Nav.Link>
+            </Nav>
+            <div onClick={() => setShowSearch(true)} style={{ cursor: 'pointer' }}>
+              <Lottie options={defaultOptions} height={40} width={40} />
+            </div>
+          </div>
+
+          {/* Lupa visível no mobile */}
+          <div className="d-lg-none" onClick={() => setShowSearch(true)} style={{ cursor: 'pointer' }}>
+            <Lottie options={defaultOptions} height={40} width={40} />
+          </div>
+        </Container>
+      </Navbar>
+
+      {/* Sidebar personalizada (mobile) */}
+      <div className={`custom-sidebar ${showSidebar ? 'show' : ''}`}>
+        <div className="sidebar-header text-end pe-3 pt-2">
+          <span onClick={() => setShowSidebar(false)} style={{ cursor: 'pointer', fontSize: '1.5rem', color: 'white' }}>×</span>
+        </div>
+        <Nav className="flex-column p-3">
+          <Nav.Link as={Link} to="/" onClick={() => setShowSidebar(false)}
+            className={`text-white ${location.pathname === '/' ? 'active-link' : ''}`}>
+            Home
+          </Nav.Link>
+          <Nav.Link as={Link} to="/about" onClick={() => setShowSidebar(false)}
+            className={`text-white ${location.pathname === '/about' ? 'active-link' : ''}`}>
+            Sobre
+          </Nav.Link>
+        </Nav>
+      </div>
+
+      {/* Overlay escuro quando a sidebar está ativa */}
+      {showSidebar && <div className="sidebar-backdrop" onClick={() => setShowSidebar(false)} />}
+
+      {/* Componente de busca flutuante */}
+      <SearchOverlay
+        visible={showSearch}
+        onClose={() => setShowSearch(false)}
+        suggestions={suggestions}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        onSuggestionClick={handleSuggestionClick}
+      />
+    </>
   );
 };
 
