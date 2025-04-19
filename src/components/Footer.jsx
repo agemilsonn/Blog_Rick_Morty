@@ -9,6 +9,8 @@ const Footer = () => {
     { name: 'Thiago Allan', github: 'https://github.com/ThiagoAlla' },
     { name: 'Ademilson Ribeiro', github: 'https://github.com/' },
     { name: 'Felipe Rebelo', github: 'https://github.com/' },
+    { name: 'Agemilson Abreu', github: 'https://github.com/' },
+    { name: 'João Victor', github: 'https://github.com/' },
   ];
 
   return (

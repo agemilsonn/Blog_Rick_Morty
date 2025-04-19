@@ -1,0 +1,113 @@
+.home-container {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 1400px;
+    /* Largura máxima aumentada */
+}
+
+.character-card {
+    min-height: 380px;
+    /* Altura mínima garantida */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(66, 180, 202, 0.2);
+}
+
+.character-card img {
+    height: 250px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.character-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.portal-title {
+    font-family: 'Get Schwifty', 'Arial Rounded MT Bold', Arial, sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    text-shadow:
+        0 0 6px #42b4ca,
+        0 0 12px #42b4ca,
+        0 0 18px #42b4ca;
+    letter-spacing: 2px;
+    animation: portal-glow 2s ease-in-out infinite alternate;
+}
+
+.portal-green {
+    color: #42b4ca;
+    background: linear-gradient(to right, #42b4ca, #2e9eae);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+.subtitle {
+    color: #95d7e3;
+    font-size: 1.2rem;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+.search-alert {
+    background-color: #e2f3f7;
+    border-color: #42b4ca;
+    color: #0c5460;
+    border-radius: 10px;
+}
+
+.no-results-alert {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    border-radius: 10px;
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: #42b4ca;
+    border-color: #42b4ca;
+}
+
+.custom-pagination .page-link {
+    color: #42b4ca;
+}
+
+.custom-pagination .page-item.active .page-link {
+    color: white;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 20px rgba(66, 180, 202, 0.2);
+}
+
+keyframes portal-glow {
+    from {
+        text-shadow:
+            0 0 6px #42b4ca,
+            0 0 12px #42b4ca;
+    }
+
+    to {
+        text-shadow:
+            0 0 8px #42b4ca,
+            0 0 16px #42b4ca,
+            0 0 24px #2e9eae;
+    }
+}
+
+@font-face {
+    font-family: 'Get Schwifty';
+    src: url('https://fonts.cdnfonts.com/css/get-schwifty') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
