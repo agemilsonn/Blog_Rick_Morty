@@ -1,4 +1,3 @@
-// pages/Home.jsx
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { searchCharacters } from '../utils/search';
@@ -24,13 +23,11 @@ const Home = () => {
     const fetchAllCharacters = async () => {
       setLoading(true);
       try {
-        // Primeiro buscamos quantos personagens existem no total
         const initialResponse = await axios.get('https://rickandmortyapi.com/api/character');
         const totalCount = initialResponse.data.info.count;
         setTotalPages(Math.ceil(totalCount / charactersPerPage));
 
-        // Depois buscamos todos os personagens paginados
-        const allPages = Math.ceil(totalCount / 20); // A API retorna 20 por página
+        const allPages = Math.ceil(totalCount / 20);
         const pageRequests = [];
 
         for (let i = 1; i <= allPages; i++) {
@@ -56,7 +53,6 @@ const Home = () => {
     fetchAllCharacters();
   }, [searchTerm]);
 
-  // Get current characters
   const currentCharacters = searchTerm
     ? filteredCharacters.slice(
       (page - 1) * charactersPerPage,
@@ -78,7 +74,6 @@ const Home = () => {
     }
   };
 
-  // Generate visible page buttons
   const getVisiblePages = () => {
     let startPage, endPage;
 
@@ -106,7 +101,6 @@ const Home = () => {
 
   return (
     <Container className="home-container my-5">
-      {/* Título animado */}
       <Row className="mb-4 justify-content-center">
         <Col xs={12} className="text-center">
           <h1 className="portal-title">
@@ -115,7 +109,6 @@ const Home = () => {
         </Col>
       </Row>
 
-      {/* Carrossel apenas na primeira página sem busca */}
       {page === 1 && !searchTerm && (
         <Row className="mb-5">
           <Col>
@@ -124,7 +117,6 @@ const Home = () => {
         </Row>
       )}
 
-      {/* Barra de pesquisa visual */}
       {searchTerm && (
         <Row className="mb-4">
           <Col>
@@ -138,7 +130,6 @@ const Home = () => {
         </Row>
       )}
 
-      {/* Cards dos personagens */}
       <Row className="g-4">
         {loading ? (
           <Col xs={12} className="text-center my-5">
@@ -160,7 +151,6 @@ const Home = () => {
         )}
       </Row>
 
-      {/* Paginação aprimorada */}
       {currentTotalPages > 1 && (
         <Row className="mt-5">
           <Col xs={12} className="d-flex justify-content-center">

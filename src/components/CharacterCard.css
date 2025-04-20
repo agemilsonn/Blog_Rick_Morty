@@ -1,0 +1,144 @@
+.character-card {
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: white;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-color: #42b4ca !important;
+}
+
+.card-image-container {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.character-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.character-card:hover .character-image {
+    transform: scale(1.03);
+}
+
+.status-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.character-name {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.character-info {
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.character-meta {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+.info-label {
+    color: #42b4ca;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.info-value {
+    color: #333;
+    font-weight: 500;
+}
+
+.details-button {
+    background-color: #42b4ca;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.details-button:hover {
+    background-color: #3aa3b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(66, 180, 202, 0.3);
+}
+
+.card-link {
+    text-decoration: none;
+}
+
+.bi-arrow-right {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.details-button:hover .bi-arrow-right {
+    transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+    .character-name {
+        font-size: 1.3rem;
+    }
+
+    .character-image {
+        height: 200px;
+    }
+
+    .card-body {
+        padding: 1.2rem;
+    }
+}
+
+@media (prefers-contrast: more) {
+    .character-card {
+        border: 3px solid #000 !important;
+    }
+
+    .info-label {
+        color: #0056b3;
+    }
+
+    .details-button {
+        background-color: #0056b3;
+    }
+}

@@ -1,62 +1,52 @@
 import React from "react";
-import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import './About.css';
 
 const About = () => {
   return (
-    <Container className="mt-5 text-light">
+    <Container className="my-5">
       <Row className="justify-content-center">
-        <Col md={8}>
-          <Card className="custom-card p-4 shadow-lg border-0">
+        <Col md={10} lg={8}>
+          <Card className="portal-card p-4 shadow-lg border-0">
             <Card.Body>
-              <Card.Title className="custom-title text-center text-3xl">
-                Sobre o Blog da Série Rick and Morty
+              <Card.Title className="portal-title text-center mb-4">
+                Sobre o Blog Interdimensional
               </Card.Title>
-              <Card.Text className="mt-3">
-                Este blog foi criado para ser a Ultima avaliação da matéria LABORATÓRIO DE PRODUÇÃO DE SOFTWARE
-              </Card.Text>
-              <h2 className="text-secondary mt-4">Integrantes do Blog:</h2>
-              <ul className="list-unstyled text-secondary">
-                <li>Thiago Allan – Desenvolvedor & Data Engineer</li>
-                <li>Ademilson Ribeiro – Desenvolvedor</li>
-                <li>Felipe Rebelo – Web Designer</li>
-                <li>João Victor – Universitário</li>
-                <li>Agemilson Abreu – Universitário</li>
-              </ul>
+              
+              <div className="portal-content">
+                <p>
+                  Este portal foi desenvolvido como projeto final para a matéria de 
+                  <strong> Laboratório de Produção de Software</strong>, explorando 
+                  a incrível dimensão de Rick and Morty.
+                </p>
+                
+                <h3 className="portal-subtitle mt-4">Equipe de Desenvolvimento</h3>
+                
+                <ul className="team-list">
+                  <li className="team-member">
+                    <span className="member-name">Thiago Allan</span> – Desenvolvedor & Data Engineer
+                  </li>
+                  <li className="team-member">
+                    <span className="member-name">Ademilson Ribeiro</span> – Desenvolvedor
+                  </li>
+                  <li className="team-member">
+                    <span className="member-name">Felipe Rebelo</span> – Web Designer
+                  </li>
+                  <li className="team-member">
+                    <span className="member-name">João Victor</span> – Universitário
+                  </li>
+                  <li className="team-member">
+                    <span className="member-name">Agemilson Abreu</span> – Universitário
+                  </li>
+                </ul>
 
-
-              <h3 className="custom-title mt-4">Entre em contato</h3>
-              <Form className="mt-3">
-                <Form.Group className="mb-3">
-                  <Form.Control 
-                      type="text" 
-                      placeholder="Seu nome" 
-                      className="custom-input" 
-                      required 
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Control 
-                      type="email" 
-                      placeholder="Seu e-mail" 
-                      className="custom-input" 
-                      required 
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Control 
-                      as="textarea" 
-                      rows={3} 
-                      placeholder="Mensagem" 
-                      className="custom-input" 
-                      required 
-                  />
-                </Form.Group>
-                <Button variant="custom-btn" 
-                        type="submit" 
-                        className="w-100">
-                  Enviar
-                </Button>
-              </Form>
+                <div className="portal-footer mt-4">
+                  <p>
+                    Este projeto utiliza a <a href="https://rickandmortyapi.com/" target="_blank" rel="noopener noreferrer">Rick and Morty API</a> para 
+                    trazer informações precisas sobre todos os personagens da série.
+                  </p>
+                </div>
+              </div>
             </Card.Body>
           </Card>
         </Col>

@@ -1,5 +1,3 @@
-
-// components/Footer.js
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { FaGithub } from 'react-icons/fa';
@@ -7,10 +5,10 @@ import { FaGithub } from 'react-icons/fa';
 const Footer = () => {
   const teamMembers = [
     { name: 'Thiago Allan', github: 'https://github.com/ThiagoAlla' },
-    { name: 'Ademilson Ribeiro', github: 'https://github.com/' },
-    { name: 'Felipe Rebelo', github: 'https://github.com/' },
-    { name: 'Agemilson Abreu', github: 'https://github.com/' },
-    { name: 'João Victor', github: 'https://github.com/' },
+    { name: 'Ademilson Ribeiro', github: 'https://github.com/Rinsano' },
+    { name: 'Felipe Rebelo', github: 'https://github.com/felipe291' },
+    { name: 'Agemilson Abreu', github: 'https://github.com/agemilsonn' },
+    { name: 'João Victor', github: 'https://github.com/Joao-Victor-Oliveira-Silva' },
   ];
 
   return (

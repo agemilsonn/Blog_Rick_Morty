@@ -1,40 +1,41 @@
-
-// components/CommentForm.js
-import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
+import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const CommentForm = () => {
-  const [formData, setFormData] = useState({ name: '', comment: '' });
+function CommentForm({ onAddComment }) {
+  const [commentText, setCommentText] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = e => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData, 'YOUR_USER_ID')
-      .then(result => alert('Comentário enviado com sucesso!'))
-      .catch(error => alert('Erro ao enviar comentário.'));
+    if (!commentText.trim()) return;
+    
+    setIsSubmitting(true);
+    onAddComment(commentText);
+    setCommentText('');
+    setIsSubmitting(false);
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="text-white">
+    <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
-        <Form.Label>Nome</Form.Label>
-        <Form.Control type="text" name="name" value={formData.name} onChange={handleChange} className="custom-input" required />
+        <Form.Control
+          as="textarea"
+          rows={3}
+          value={commentText}
+          onChange={(e) => setCommentText(e.target.value)}
+          placeholder="Deixe seu comentário interdimensional..."
+        />
       </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Comentário</Form.Label>
-        <Form.Control as="textarea" rows={3} name="comment" value={formData.comment} onChange={handleChange} className="custom-input" required />
-      </Form.Group>
-      <Button variant="light" type="submit" className="custom-btn">Enviar</Button>
+      <Button 
+        variant="primary" 
+        type="submit" 
+        disabled={isSubmitting || !commentText.trim()}
+        className="portal-button"
+      >
+        {isSubmitting ? 'Enviando...' : 'Enviar Comentário'}
+      </Button>
     </Form>
   );
-};
+}
 
 export default CommentForm;
-
-
-
-

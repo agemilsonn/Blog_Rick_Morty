@@ -8,8 +8,7 @@
     z-index: 1050;
     display: flex;
     justify-content: center;
-    /* Remova o align-items e adicione padding-top ou use align-self no .search-box */
-    padding-top: 80px; /* Ajuste aqui para mover mais pra cima */
+    padding-top: 80px;
   }
   
   .search-box {

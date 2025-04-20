@@ -3,17 +3,16 @@ import { Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const CarouselComponent = () => {
-  // Estilos atualizados
   const carouselWrapperStyle = {
     position: 'relative',
-    maxWidth: '600px',  
+    maxWidth: '600px',
     margin: '40px auto',
-    padding: '0 70px',  
+    padding: '0 70px',
   };
 
   const imageStyle = {
     width: '100%',
-    height: '400px',  
+    height: '400px',
     objectFit: 'cover',
     objectPosition: 'top',
     borderRadius: '15px',
@@ -28,13 +27,13 @@ const CarouselComponent = () => {
 
   const controlStyle = {
     filter: 'invert(100%)',
-    width: '40px',  
+    width: '40px',
     height: '40px',
     backgroundColor: 'rgba(0,0,0,0.3)',
     borderRadius: '50%',
     backgroundSize: '30px 30px',
     backgroundPosition: 'center',
-    margin: '0 -50px', 
+    margin: '0 -50px',
   };
 
   const randomImageIds = useMemo(() => {

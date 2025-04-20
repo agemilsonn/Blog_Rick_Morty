@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { FormControl, Dropdown, Image } from 'react-bootstrap';
-import './SearchOverlay.css'; // vamos criar esse estilo
+import './SearchOverlay.css';
 
 const SearchOverlay = ({ visible, onClose, suggestions, searchTerm, setSearchTerm, onSuggestionClick }) => {
   const overlayRef = useRef();
@@ -8,7 +8,7 @@ const SearchOverlay = ({ visible, onClose, suggestions, searchTerm, setSearchTer
   useEffect(() => {
     function handleClickOutside(event) {
       if (overlayRef.current && !overlayRef.current.contains(event.target)) {
-        onClose(); 
+        onClose();
       }
     }
 

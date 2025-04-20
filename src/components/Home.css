@@ -3,12 +3,10 @@
     padding: 2rem;
     border-radius: 15px;
     max-width: 1400px;
-    /* Largura máxima aumentada */
 }
 
 .character-card {
     min-height: 380px;
-    /* Altura mínima garantida */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 

@@ -1,14 +1,10 @@
-/* MyNavbar.css */
-
-/* Estilo base da Navbar */
 .navbar {
-  background: linear-gradient(135deg, #1a1e29 0%, #0d0f16 100%) !important;
+  background: linear-gradient(135deg, #121527 0%, #0099ad 100%) !important;
   border-bottom: 2px solid #42b4ca;
   box-shadow: 0 4px 12px rgba(66, 180, 202, 0.3);
   padding: 0.5rem 1rem;
 }
 
-/* Logo */
 .navbar-brand img {
   height: 50px !important;
   transition: all 0.3s ease;
@@ -20,7 +16,6 @@
   filter: drop-shadow(0 0 8px rgba(66, 180, 202, 0.9));
 }
 
-/* Links da Navbar */
 .nav-link {
   color: #e0e0e0 !important;
   font-weight: 500;
@@ -57,7 +52,6 @@
   border-radius: 3px;
 }
 
-/* Ícone de pesquisa */
 .react-lottie {
   cursor: pointer;
   transition: all 0.3s ease;
@@ -69,7 +63,6 @@
   filter: drop-shadow(0 0 8px rgba(66, 180, 202, 0.8));
 }
 
-/* Sidebar mobile */
 .custom-sidebar {
   position: fixed;
   top: 0;
@@ -131,14 +124,12 @@
   backdrop-filter: blur(5px);
 }
 
-/* Botão hamburguer */
 .navbar-toggler {
   border: none;
   color: #42b4ca !important;
   font-size: 1.8rem;
 }
 
-/* Responsividade */
 @media (max-width: 992px) {
   .navbar {
     padding: 0.5rem;
@@ -149,7 +140,6 @@
   }
 }
 
-/* Efeito de portal nos cantos */
 .navbar::before {
   content: '';
   position: absolute;
